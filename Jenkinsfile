@@ -25,7 +25,7 @@ pipeline {
         failure {
             mail to:"suddalakeerthana@gmail.com",
             subject: 'Failure Message',
-            body: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.currentResult}"
+            body: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.currentResult}, Build stage :${currentBuild}"
         }
         success {
             mail to: 'suddalakeerthana@gmail.com',
