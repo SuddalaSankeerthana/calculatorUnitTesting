@@ -20,12 +20,18 @@ pipeline {
         sh 'npm run test'
       }
     }
-  }
-    post {
-        status= "${currentBuild.currentResult}: Job Name \n: 
-                ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\n More 
-                information at: ${env.BUILD_URL}"
-        always{
-            emailext body: "Caculator repository CI/CD status message:${currentBuild.currentResult}",
+    }
+    post{
+        failure {
+            mail to:"suddalakeerthana@gmail.com",
+            subject: 'Failure Message',
+            body: "${env.JOB_NAME} - Build #${env.BUILD_NUMBER} ${currentBuild.currentResult}"
         }
-     }}
+        success {
+            mail to: 'suddalakeerthana@gmail.com',
+            subject: "Success",
+            body: "Successfully passed all the stages"
+        }
+    }
+  }
+  
