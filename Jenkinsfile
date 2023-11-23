@@ -22,7 +22,10 @@ pipeline {
     }
   }
     post {
+        status= "${currentBuild.currentResult}: Job Name \n: 
+                ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\n More 
+                information at: ${env.BUILD_URL}"
         always{
-            emailext body: "Caculator repository CI/CD status message",
+            emailext body: "Caculator repository CI/CD status message:${currentBuild.currentResult}",
         }
      }}
