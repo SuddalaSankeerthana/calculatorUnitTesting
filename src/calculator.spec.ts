@@ -2,7 +2,7 @@ import Calculator from './calculator';
 describe('test calculator', () => {
   test('addition', () => {
     const calculator = new Calculator();
-    const result = calculator.add(2, 3);
+    const result = calculator.add(5, 3);
     expect(result).toBe(5);
   });
   test('subtraction', () => {
